@@ -484,3 +484,4 @@ C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp.Android\obj\Debug\90\res
 C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp.Android\obj\Debug\90\res\drawable-xxhdpi\splash.9.png
 C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp.Android\obj\Debug\90\res\drawable-mdpi\splash.9.png
 C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp.Android\obj\Debug\90\android\src\crc64d14a7f5e9ea50271\SplashActivity.java
+C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp.Android\obj\Debug\90\android\assets\Newtonsoft.Json.dll

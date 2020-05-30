@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "3XrT1iFSPezfistebwv/qA1XBgU3b62ycN9zN43rOYnAHteg8D7DMiJXpKEhlrydrTy4bTMh23nUJvrYTFEZWg==",
+  "dgSpecHash": "A682rc3MMN9tzx4usjZaM67IiKprJ7IpzrVnO2126XGhsho3NPIxvF73N1alljY0MTPFCXePy4oeLZNxp3Y0NA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Franck\\source\\repos\\PizzaApp\\PizzaApp\\PizzaApp.iOS\\PizzaApp.iOS.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Franck\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\Franck\\.nuget\\packages\\xamarin.essentials\\1.5.3.2\\xamarin.essentials.1.5.3.2.nupkg.sha512",
     "C:\\Users\\Franck\\.nuget\\packages\\xamarin.forms\\4.6.0.800\\xamarin.forms.4.6.0.800.nupkg.sha512"
   ],

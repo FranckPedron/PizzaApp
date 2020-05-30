@@ -7,8 +7,8 @@ C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp\obj\Debug\netstandard2.0
 C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
 C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp\obj\Debug\netstandard2.0\PizzaApp.AssemblyInfoInputs.cache
 C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp\obj\Debug\netstandard2.0\PizzaApp.AssemblyInfo.cs
-C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp\obj\Debug\netstandard2.0\PizzaApp.csproj.CoreCompileInputs.cache
-C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp\obj\Debug\netstandard2.0\XamlC.stamp
 C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp\obj\Debug\netstandard2.0\PizzaApp.dll
 C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp\obj\Debug\netstandard2.0\ref\PizzaApp.dll
 C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp\obj\Debug\netstandard2.0\PizzaApp.pdb
+C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp\obj\Debug\netstandard2.0\PizzaApp.csproj.CoreCompileInputs.cache
+C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp\obj\Debug\netstandard2.0\XamlC.stamp

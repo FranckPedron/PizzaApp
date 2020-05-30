@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "N/Np51RjARJ2t2e9DAjv/JGqu7E0O/vwvaWTYsGvrK8m292VoczO6yx+1a8Wts6d3wjZEgoZKJzaue/jX/HUDQ==",
+  "dgSpecHash": "aBW06/4KQZ689BZI2eDkupxWRIiMMwVNcAkDAyws7y8p/sl7R/CmkZ+QP++gAev0ivnnAcEAR4FEeTF6+Ot3CQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Franck\\source\\repos\\PizzaApp\\PizzaApp\\PizzaApp.Android\\PizzaApp.Android.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Franck\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.arch.core.common\\1.1.1.3\\xamarin.android.arch.core.common.1.1.1.3.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.arch.core.runtime\\1.1.1.3\\xamarin.android.arch.core.runtime.1.1.1.3.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.arch.lifecycle.common\\1.1.1.3\\xamarin.android.arch.lifecycle.common.1.1.1.3.nupkg.sha512",
