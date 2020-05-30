@@ -8358,10 +8358,13 @@ namespace PizzaApp.Droid
 			public const int pizza_logo = 2131165294;
 			
 			// aapt resource value: 0x7F07006F
-			public const int tooltip_frame_dark = 2131165295;
+			public const int splash = 2131165295;
 			
 			// aapt resource value: 0x7F070070
-			public const int tooltip_frame_light = 2131165296;
+			public const int tooltip_frame_dark = 2131165296;
+			
+			// aapt resource value: 0x7F070071
+			public const int tooltip_frame_light = 2131165297;
 			
 			static Drawable()
 			{
