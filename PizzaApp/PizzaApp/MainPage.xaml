@@ -33,15 +33,15 @@
                             <ColumnDefinition Width="50"/>
                         </Grid.ColumnDefinitions>
 
-                        <Image BackgroundColor="Blue" Grid.Row="0" Grid.Column="0" Margin="10,15,5,15"/>
+                        <Image Source="{Binding imageUrl}" BackgroundColor="#f0f0f0" Grid.Row="0" Grid.Column="0" Margin="10,15,5,15" Aspect="AspectFill" />
                         
                         <StackLayout Grid.Row="0"
                                      Grid.Column="1"
                                      Orientation="Vertical"
                                      VerticalOptions="Center"
                                      HorizontalOptions="FillAndExpand">
-                                <Label Text="{Binding nom}"  x:Name="pizzaName" FontSize="24" TextColor="Black" FontAttributes="Bold"/>
-                            <Label Text="{Binding IngredientsStr}" x:Name="pizzaIngredients" TextColor="#555555"/>
+                            <Label Text="{Binding Titre}"  x:Name="pizzaName" FontSize="24" TextColor="Black" FontAttributes="Bold"/>
+                            <Label Text="{Binding IngredientsStr}" x:Name="pizzaIngredients" TextColor="#555555" MaxLines="2" LineBreakMode="TailTruncation" />
                         </StackLayout>
                         
                         <Label Text="{Binding PrixEuros}" Grid.Row="0" Grid.Column="2" x:Name="pizzaPrix" FontAttributes="Bold" VerticalOptions="Center" >
