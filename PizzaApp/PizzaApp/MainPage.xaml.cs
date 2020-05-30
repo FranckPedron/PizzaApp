@@ -25,6 +25,11 @@ namespace PizzaApp
             pizzas.Add(new Pizza { nom = "Montagnarde", prix = 11, ingredients = new string[] { "Reblochon", "pommes de terre", "oignons","crème" } });
             pizzas.Add(new Pizza { nom = "Carnivore", prix = 14, ingredients = new string[] { "Tomate", "viande hachée", "Mozzarella" } });
 
+
+            listView.ItemsSource = pizzas;
+            {
+               
+            }
         }
     }
 }

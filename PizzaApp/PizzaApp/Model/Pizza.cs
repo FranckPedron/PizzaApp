@@ -10,6 +10,9 @@ namespace PizzaApp.Model
         public int prix { get; set; }
         public string[] ingredients { get; set; }
 
+
+        public string PrixEuros { get { return prix + "€"; } }
+        public string IngredientsStr { get { return String.Join(", ", ingredients); } }
         public Pizza()
         {
         }
