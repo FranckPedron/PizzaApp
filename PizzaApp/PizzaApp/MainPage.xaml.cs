@@ -29,6 +29,7 @@ namespace PizzaApp
         const string KEY_TRI = "tri";
 
         string jsonFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),"pizzas.json");
+        string tempFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "temp");
 
         public MainPage()
         {
@@ -44,7 +45,10 @@ namespace PizzaApp
             {
                 DownloadData((pizzas) =>
                 {
-                    listView.ItemsSource = GetPizzasFromTri(tri,pizzas);
+                    if (pizzas != null)
+                    {
+                        listView.ItemsSource = GetPizzasFromTri(tri, pizzas);
+                    }
                     listView.IsRefreshing = false;
                 });
 
@@ -52,11 +56,23 @@ namespace PizzaApp
 
             listView.IsVisible = false;
             waitLayout.IsVisible = true;
+            if (File.Exists(jsonFileName))
+            {
+                string pizzaJson=File.ReadAllText(jsonFileName);
+                if (!string.IsNullOrEmpty(pizzaJson))
+                {
+                    pizzas = JsonConvert.DeserializeObject<List<Pizza>>(pizzaJson);
+                    listView.ItemsSource = GetPizzasFromTri(tri, pizzas);
+                    listView.IsVisible = true;
+                    waitLayout.IsVisible = false;
+                }
+            }
 
             DownloadData((pizzas) =>
             {
+              if (pizzas != null) { 
                 listView.ItemsSource = GetPizzasFromTri(tri, pizzas);
-
+                }
                 listView.IsVisible = true;
                 waitLayout.IsVisible = false;
 
@@ -74,6 +90,7 @@ namespace PizzaApp
                     Exception ex = e.Error;
                     if (ex == null)
                     {
+                        File.Copy(tempFileName, jsonFileName, true);
                         string pizzasJson=File.ReadAllText(jsonFileName);
                         pizzas = JsonConvert.DeserializeObject<List<Pizza>>(pizzasJson);
 
@@ -85,14 +102,14 @@ namespace PizzaApp
                     }
                     else
                     {
-                        Device.BeginInvokeOnMainThread(() =>
+                        Device.BeginInvokeOnMainThread(async() =>
                         {
-                            DisplayAlert("Erreur !", "Une erreur s'est produite: " + ex.Message, "OK");
+                            await DisplayAlert("Erreur !", "Une erreur s'est produite: " + ex.Message, "OK");
                             action.Invoke(null);
                         });
                     }
                 };
-                webClient.DownloadFileAsync(new Uri(URL),jsonFileName);
+                webClient.DownloadFileAsync(new Uri(URL),tempFileName);
             }
 
         }
