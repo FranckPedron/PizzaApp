@@ -75,8 +75,12 @@ namespace PizzaApp
                     }
                 };
                     webClient.DownloadStringAsync(new Uri(URL));
-
             }
+
+        }
+
+        private void ImageButton_Clicked(object sender, EventArgs e)
+        {
 
         }
     }

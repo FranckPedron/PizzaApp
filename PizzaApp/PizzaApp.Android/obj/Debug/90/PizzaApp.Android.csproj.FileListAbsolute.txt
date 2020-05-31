@@ -485,3 +485,9 @@ C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp.Android\obj\Debug\90\res
 C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp.Android\obj\Debug\90\res\drawable-mdpi\splash.9.png
 C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp.Android\obj\Debug\90\android\src\crc64d14a7f5e9ea50271\SplashActivity.java
 C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp.Android\obj\Debug\90\android\assets\Newtonsoft.Json.dll
+C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp.Android\obj\Debug\90\res\drawable\sort_fav.png
+C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp.Android\obj\Debug\90\res\drawable\sort_nom.png
+C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp.Android\obj\Debug\90\res\drawable\sort_none.png
+C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp.Android\obj\Debug\90\res\drawable\sort_prix.png
+C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp.Android\obj\Debug\90\res\drawable\star1.png
+C:\Users\Franck\source\repos\PizzaApp\PizzaApp\PizzaApp.Android\obj\Debug\90\res\drawable\star2.png
