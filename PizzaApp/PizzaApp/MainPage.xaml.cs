@@ -16,7 +16,14 @@ namespace PizzaApp
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+        List<Pizza> pizzas;
 
+        enum e_tri
+        {
+            TRI_AUCUN, TRI_NOM, TRI_PRIX
+        };
+
+        e_tri tri = e_tri.TRI_AUCUN;
 
         public MainPage()
         {
@@ -24,11 +31,11 @@ namespace PizzaApp
 
             listView.RefreshCommand = new Command((obj) =>
             {
-                  DownloadData((pizzas) =>
-                  {
-                      listView.ItemsSource = pizzas;
-                      listView.IsRefreshing = false;
-                  });
+                DownloadData((pizzas) =>
+                {
+                    listView.ItemsSource = GetPizzasFromTri(tri,pizzas);
+                    listView.IsRefreshing = false;
+                });
 
             });
 
@@ -37,13 +44,13 @@ namespace PizzaApp
 
             DownloadData((pizzas) =>
             {
-                      listView.ItemsSource = pizzas;
+                listView.ItemsSource = GetPizzasFromTri(tri, pizzas);
 
-                      listView.IsVisible = true;
-                      waitLayout.IsVisible = false;
+                listView.IsVisible = true;
+                waitLayout.IsVisible = false;
 
             });
-              
+
         }
         public void DownloadData(Action<List<Pizza>> action)
         {
@@ -55,7 +62,7 @@ namespace PizzaApp
                     try
                     {
                         string pizzasJson = e.Result;
-                        List<Pizza> pizzas = JsonConvert.DeserializeObject<List<Pizza>>(pizzasJson);
+                        pizzas = JsonConvert.DeserializeObject<List<Pizza>>(pizzasJson);
 
                         Device.BeginInvokeOnMainThread(() =>
                         {
@@ -74,15 +81,66 @@ namespace PizzaApp
                         });
                     }
                 };
-                    webClient.DownloadStringAsync(new Uri(URL));
+                webClient.DownloadStringAsync(new Uri(URL));
             }
 
         }
 
-        private void ImageButton_Clicked(object sender, EventArgs e)
+        private void SortButton_Clicked(object sender, EventArgs e)
         {
+            if (tri == e_tri.TRI_AUCUN)
+            {
+                tri = e_tri.TRI_NOM;
+            }
+            else if (tri == e_tri.TRI_NOM)
+            {
+                tri = e_tri.TRI_PRIX;
+            }
+            else if (tri == e_tri.TRI_PRIX)
+            {
+                tri = e_tri.TRI_AUCUN;
+            }
+
+            sortButton.Source= GetImageSourceFromTri(tri);
+            listView.ItemsSource = GetPizzasFromTri(tri, pizzas);
+        }
+       
+        private string GetImageSourceFromTri(e_tri t)
+        {
+            switch (t) {
+                case e_tri.TRI_NOM: 
+                    return "sort_nom.png";
+
+                case e_tri.TRI_PRIX:
+                    return "sort_prix.png";
+            }
+            return "sort_none.png";
+        }
+
+        private List<Pizza> GetPizzasFromTri(e_tri t, List<Pizza> l)
+        {
+            switch (t)
+            {
+                case e_tri.TRI_NOM:
+                    {
+                        List<Pizza> ret = new List<Pizza>(l);
+                        ret.Sort((p1,p2)=> { return p1.Titre.CompareTo(p2.Titre); });
+                        return ret;
+                    }
+                   
+
+                case e_tri.TRI_PRIX:
+                    {
+                        List<Pizza> ret = new List<Pizza>(l);
+                        ret.Sort((p1, p2) => { return p2.prix.CompareTo(p1.prix); });
+                        return ret;
+                    }
+            }
+            return l;
 
         }
     }
 }
+    
+
 

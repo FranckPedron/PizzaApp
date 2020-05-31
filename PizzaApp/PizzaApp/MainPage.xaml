@@ -25,11 +25,11 @@
 			    FontAttributes="Bold"
 			    TextColor="White" VerticalOptions="Center" />
             </StackLayout>
-            <ImageButton Source="sort_none.png"
+            <ImageButton x:Name="sortButton" Source="sort_none.png"
                          Grid.Row="0 "
                          Grid.Column="2"
                          HeightRequest="40"
-                         Clicked="ImageButton_Clicked"
+                         Clicked="SortButton_Clicked"
                          BackgroundColor="Transparent" />
         </Grid>
   
