@@ -33,7 +33,10 @@ namespace PizzaApp
                     }
            
             catch (Exception e){
-                    DisplayAlert("Erreur !", "Le serveur ne répond pas !", "OK");
+                    Device.BeginInvokeOnMainThread(() => {
+                        DisplayAlert("Erreur !", "Une erreur s'est produite: " + e.Message, "OK");
+                    });
+                    return;
                 }
             }
             pizzas = JsonConvert.DeserializeObject<List<Pizza>>(pizzasJson);
