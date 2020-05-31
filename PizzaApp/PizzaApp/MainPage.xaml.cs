@@ -3,6 +3,7 @@ using PizzaApp.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -26,6 +27,8 @@ namespace PizzaApp
         e_tri tri = e_tri.TRI_AUCUN;
 
         const string KEY_TRI = "tri";
+
+        string jsonFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),"pizzas.json");
 
         public MainPage()
         {
@@ -65,11 +68,13 @@ namespace PizzaApp
             const string URL = "https://drive.google.com/uc?export=download&id=1iGfsZabkvtiHtr8ZDjcgrPQLF3KSU2Rc";
             using (var webClient = new WebClient())
             {
-                webClient.DownloadStringCompleted += (object sender, DownloadStringCompletedEventArgs e) =>
+                webClient.DownloadFileCompleted += (object sender, AsyncCompletedEventArgs e) =>
                 {
-                    try
+
+                    Exception ex = e.Error;
+                    if (ex == null)
                     {
-                        string pizzasJson = e.Result;
+                        string pizzasJson=File.ReadAllText(jsonFileName);
                         pizzas = JsonConvert.DeserializeObject<List<Pizza>>(pizzasJson);
 
                         Device.BeginInvokeOnMainThread(() =>
@@ -78,9 +83,7 @@ namespace PizzaApp
 
                         });
                     }
-
-
-                    catch (Exception ex)
+                    else
                     {
                         Device.BeginInvokeOnMainThread(() =>
                         {
@@ -89,7 +92,7 @@ namespace PizzaApp
                         });
                     }
                 };
-                webClient.DownloadStringAsync(new Uri(URL));
+                webClient.DownloadFileAsync(new Uri(URL),jsonFileName);
             }
 
         }
