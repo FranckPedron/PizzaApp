@@ -16,35 +16,43 @@ namespace PizzaApp
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
-        List<Pizza> pizzas;
+        
         
         public MainPage()
         {
             InitializeComponent();
 
             const string URL = "https://drive.google.com/uc?export=download&id=1iGfsZabkvtiHtr8ZDjcgrPQLF3KSU2Rc";
-            string pizzasJson = "";
+
+            listView.IsVisible = false;
+            waitLayout.IsVisible = true;
             
             using (var webClient = new WebClient())
             {
-                try { 
-                
-                    pizzasJson = webClient.DownloadString(URL);
+                try {
+                    webClient.DownloadStringCompleted += (object sender, DownloadStringCompletedEventArgs e) =>
+                      {
+                          
+                          string pizzasJson = e.Result;
+                          List<Pizza> pizzas = JsonConvert.DeserializeObject<List<Pizza>>(pizzasJson);
+
+                          Device.BeginInvokeOnMainThread(() =>
+                          {
+                              listView.ItemsSource = pizzas;
+                              listView.IsVisible = true;
+                              waitLayout.IsVisible = false;
+                          });
+                      };
+
+                    webClient.DownloadStringAsync(new Uri(URL));
                     }
            
-            catch (Exception e){
-                    Device.BeginInvokeOnMainThread(() => {
-                        DisplayAlert("Erreur !", "Une erreur s'est produite: " + e.Message, "OK");
-                    });
+                catch (Exception e){
+                        Device.BeginInvokeOnMainThread(() => {
+                            DisplayAlert("Erreur !", "Une erreur s'est produite: " + e.Message, "OK");
+                        });
                     return;
                 }
-            }
-            pizzas = JsonConvert.DeserializeObject<List<Pizza>>(pizzasJson);
-            
-
-            listView.ItemsSource = pizzas;
-            {
-               
             }
         }
     }
