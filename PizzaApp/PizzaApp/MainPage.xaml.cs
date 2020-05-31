@@ -16,44 +16,69 @@ namespace PizzaApp
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
-        
-        
+
+
         public MainPage()
         {
             InitializeComponent();
 
-            const string URL = "https://drive.google.com/uc?export=download&id=1iGfsZabkvtiHtr8ZDjcgrPQLF3KSU2Rc";
+            listView.RefreshCommand = new Command((obj) =>
+            {
+                  DownloadData((pizzas) =>
+                  {
+                      listView.ItemsSource = pizzas;
+                      listView.IsRefreshing = false;
+                  });
+
+            });
 
             listView.IsVisible = false;
             waitLayout.IsVisible = true;
-            
+
+            DownloadData((pizzas) =>
+            {
+                      listView.ItemsSource = pizzas;
+
+                      listView.IsVisible = true;
+                      waitLayout.IsVisible = false;
+
+            });
+              
+        }
+        public void DownloadData(Action<List<Pizza>> action)
+        {
+            const string URL = "https://drive.google.com/uc?export=download&id=1iGfsZabkvtiHtr8ZDjcgrPQLF3KSU2Rc";
             using (var webClient = new WebClient())
             {
-                try {
-                    webClient.DownloadStringCompleted += (object sender, DownloadStringCompletedEventArgs e) =>
-                      {
-                          
-                          string pizzasJson = e.Result;
-                          List<Pizza> pizzas = JsonConvert.DeserializeObject<List<Pizza>>(pizzasJson);
+                webClient.DownloadStringCompleted += (object sender, DownloadStringCompletedEventArgs e) =>
+                {
+                    try
+                    {
+                        string pizzasJson = e.Result;
+                        List<Pizza> pizzas = JsonConvert.DeserializeObject<List<Pizza>>(pizzasJson);
 
-                          Device.BeginInvokeOnMainThread(() =>
-                          {
-                              listView.ItemsSource = pizzas;
-                              listView.IsVisible = true;
-                              waitLayout.IsVisible = false;
-                          });
-                      };
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            action.Invoke(pizzas);
 
-                    webClient.DownloadStringAsync(new Uri(URL));
-                    }
-           
-                catch (Exception e){
-                        Device.BeginInvokeOnMainThread(() => {
-                            DisplayAlert("Erreur !", "Une erreur s'est produite: " + e.Message, "OK");
                         });
-                    return;
-                }
+                    }
+
+
+                    catch (Exception ex)
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            DisplayAlert("Erreur !", "Une erreur s'est produite: " + ex.Message, "OK");
+                            action.Invoke(null);
+                        });
+                    }
+                };
+                    webClient.DownloadStringAsync(new Uri(URL));
+
             }
+
         }
     }
 }
+
