@@ -18,6 +18,8 @@ namespace PizzaApp
     public partial class MainPage : ContentPage
     {
         List<Pizza> pizzas;
+       
+        List<string> pizzasFav=new List<string>();
 
         enum e_tri
         {
@@ -35,6 +37,11 @@ namespace PizzaApp
         {
             InitializeComponent();
 
+            pizzasFav.Add("4 fromages");
+            pizzasFav.Add("indienne");
+            pizzasFav.Add("tartiflette");
+
+
             if (Application.Current.Properties.ContainsKey(KEY_TRI))
             {
                 tri = (e_tri)Application.Current.Properties[KEY_TRI];
@@ -47,7 +54,7 @@ namespace PizzaApp
                 {
                     if (pizzas != null)
                     {
-                        listView.ItemsSource = GetPizzasFromTri(tri, pizzas);
+                        listView.ItemsSource = GetPizzaCells(GetPizzasFromTri(tri, pizzas),pizzasFav);
                     }
                     listView.IsRefreshing = false;
                 });
@@ -62,7 +69,7 @@ namespace PizzaApp
                 if (!string.IsNullOrEmpty(pizzaJson))
                 {
                     pizzas = JsonConvert.DeserializeObject<List<Pizza>>(pizzaJson);
-                    listView.ItemsSource = GetPizzasFromTri(tri, pizzas);
+                    listView.ItemsSource = GetPizzaCells(GetPizzasFromTri(tri, pizzas), pizzasFav);
                     listView.IsVisible = true;
                     waitLayout.IsVisible = false;
                 }
@@ -71,7 +78,7 @@ namespace PizzaApp
             DownloadData((pizzas) =>
             {
               if (pizzas != null) { 
-                listView.ItemsSource = GetPizzasFromTri(tri, pizzas);
+                listView.ItemsSource = GetPizzaCells(GetPizzasFromTri(tri, pizzas), pizzasFav);
                 }
                 listView.IsVisible = true;
                 waitLayout.IsVisible = false;
@@ -130,7 +137,7 @@ namespace PizzaApp
             }
 
             sortButton.Source= GetImageSourceFromTri(tri);
-            listView.ItemsSource = GetPizzasFromTri(tri, pizzas);
+            listView.ItemsSource = GetPizzaCells(GetPizzasFromTri(tri, pizzas), pizzasFav); ;
 
             Application.Current.Properties[KEY_TRI] = (int)tri;
             Application.Current.SavePropertiesAsync();
@@ -169,6 +176,22 @@ namespace PizzaApp
             }
             return l;
 
+        }
+        private List<PizzaCell>GetPizzaCells(List<Pizza> p,List<string> f)
+        {
+            List<PizzaCell> ret = new List<PizzaCell>();
+            
+            if(p == null)
+            {
+                return ret;
+            }
+
+            foreach(Pizza pizza in p)
+            {
+                bool isFav = f.Contains(pizza.nom);
+                ret.Add(new PizzaCell { pizza = pizza,isFavorite= isFav});
+            }
+            return ret;
         }
     }
 }
