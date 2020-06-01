@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Franck\\source\\repos\\PizzaApp\\PizzaApp\\PizzaApp\\PizzaApp.csproj": {}
+    "C:\\Users\\Franck\\Source\\Repos\\PizzaApp\\PizzaApp\\PizzaApp\\PizzaApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Franck\\source\\repos\\PizzaApp\\PizzaApp\\PizzaApp\\PizzaApp.csproj": {
+    "C:\\Users\\Franck\\Source\\Repos\\PizzaApp\\PizzaApp\\PizzaApp\\PizzaApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Franck\\source\\repos\\PizzaApp\\PizzaApp\\PizzaApp\\PizzaApp.csproj",
+        "projectUniqueName": "C:\\Users\\Franck\\Source\\Repos\\PizzaApp\\PizzaApp\\PizzaApp\\PizzaApp.csproj",
         "projectName": "PizzaApp",
-        "projectPath": "C:\\Users\\Franck\\source\\repos\\PizzaApp\\PizzaApp\\PizzaApp\\PizzaApp.csproj",
+        "projectPath": "C:\\Users\\Franck\\Source\\Repos\\PizzaApp\\PizzaApp\\PizzaApp\\PizzaApp.csproj",
         "packagesPath": "C:\\Users\\Franck\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Franck\\source\\repos\\PizzaApp\\PizzaApp\\PizzaApp\\obj\\",
+        "outputPath": "C:\\Users\\Franck\\Source\\Repos\\PizzaApp\\PizzaApp\\PizzaApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

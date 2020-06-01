@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XR+XSZpr1YgKvs0Zysn6flOZC7iDK4VrYZgZSEKsI3niVFpX/+t/+/n9+Vb+2O4HD5dDAwXtrNrZW1XeAKQOLA==",
+  "dgSpecHash": "73iqpxvlMObiKQg8sZmwtNCfE219qjQWgNVcxagnrOhG8J1VrscfQpPZAFNyWMt5zyFrvP2bAhmSzbO8WLQjaA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Franck\\source\\repos\\PizzaApp\\PizzaApp\\PizzaApp.iOS\\PizzaApp.iOS.csproj",
+  "projectFilePath": "C:\\Users\\Franck\\Source\\Repos\\PizzaApp\\PizzaApp\\PizzaApp.iOS\\PizzaApp.iOS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Franck\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\Franck\\.nuget\\packages\\xamarin.essentials\\1.5.3.2\\xamarin.essentials.1.5.3.2.nupkg.sha512",

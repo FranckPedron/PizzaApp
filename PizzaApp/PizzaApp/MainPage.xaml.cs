@@ -37,9 +37,6 @@ namespace PizzaApp
         {
             InitializeComponent();
 
-            pizzasFav.Add("4 fromages");
-            pizzasFav.Add("indienne");
-            pizzasFav.Add("tartiflette");
 
 
             if (Application.Current.Properties.ContainsKey(KEY_TRI))
@@ -177,6 +174,19 @@ namespace PizzaApp
             return l;
 
         }
+
+        private void OnFavPizzaChanged(PizzaCell pizzaCell)
+        {
+            bool isInFavList = pizzasFav.Contains(pizzaCell.pizza.nom);
+            if (pizzaCell.isFavorite && !isInFavList)
+            {
+                pizzasFav.Add(pizzaCell.pizza.nom);
+            }
+            else if(!pizzaCell.isFavorite && isInFavList){
+                pizzasFav.Remove(pizzaCell.pizza.nom);
+            }
+        }
+
         private List<PizzaCell>GetPizzaCells(List<Pizza> p,List<string> f)
         {
             List<PizzaCell> ret = new List<PizzaCell>();
@@ -189,7 +199,7 @@ namespace PizzaApp
             foreach(Pizza pizza in p)
             {
                 bool isFav = f.Contains(pizza.nom);
-                ret.Add(new PizzaCell { pizza = pizza,isFavorite= isFav});
+                ret.Add(new PizzaCell { pizza = pizza,isFavorite= isFav, favChangedAction= OnFavPizzaChanged});
             }
             return ret;
         }

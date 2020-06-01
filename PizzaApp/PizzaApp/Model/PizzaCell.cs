@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
 using System.Windows.Input;
-using PizzaApp.extensions;
 using Xamarin.Forms;
 
 namespace PizzaApp.Model

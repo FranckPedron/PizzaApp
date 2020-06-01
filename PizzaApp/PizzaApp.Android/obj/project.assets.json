@@ -1978,11 +1978,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Franck\\source\\repos\\PizzaApp\\PizzaApp\\PizzaApp.Android\\PizzaApp.Android.csproj",
+      "projectUniqueName": "C:\\Users\\Franck\\Source\\Repos\\PizzaApp\\PizzaApp\\PizzaApp.Android\\PizzaApp.Android.csproj",
       "projectName": "PizzaApp.Android",
-      "projectPath": "C:\\Users\\Franck\\source\\repos\\PizzaApp\\PizzaApp\\PizzaApp.Android\\PizzaApp.Android.csproj",
+      "projectPath": "C:\\Users\\Franck\\Source\\Repos\\PizzaApp\\PizzaApp\\PizzaApp.Android\\PizzaApp.Android.csproj",
       "packagesPath": "C:\\Users\\Franck\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Franck\\source\\repos\\PizzaApp\\PizzaApp\\PizzaApp.Android\\obj\\",
+      "outputPath": "C:\\Users\\Franck\\Source\\Repos\\PizzaApp\\PizzaApp\\PizzaApp.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -2003,8 +2003,8 @@
       "frameworks": {
         "monoandroid90": {
           "projectReferences": {
-            "C:\\Users\\Franck\\source\\repos\\PizzaApp\\PizzaApp\\PizzaApp\\PizzaApp.csproj": {
-              "projectPath": "C:\\Users\\Franck\\source\\repos\\PizzaApp\\PizzaApp\\PizzaApp\\PizzaApp.csproj"
+            "C:\\Users\\Franck\\Source\\Repos\\PizzaApp\\PizzaApp\\PizzaApp\\PizzaApp.csproj": {
+              "projectPath": "C:\\Users\\Franck\\Source\\Repos\\PizzaApp\\PizzaApp\\PizzaApp\\PizzaApp.csproj"
             }
           }
         }
