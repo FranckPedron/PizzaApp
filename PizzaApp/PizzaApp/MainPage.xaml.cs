@@ -29,15 +29,20 @@ namespace PizzaApp
         e_tri tri = e_tri.TRI_AUCUN;
 
         const string KEY_TRI = "tri";
+        const string KEY_FAV = "fav";
 
         string jsonFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),"pizzas.json");
         string tempFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "temp");
+
+        string favListFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "pizzasFav");
+        string tempFavFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "tempFav");
 
         public MainPage()
         {
             InitializeComponent();
 
 
+            LoadFavList();
 
             if (Application.Current.Properties.ContainsKey(KEY_TRI))
             {
@@ -178,12 +183,15 @@ namespace PizzaApp
         private void OnFavPizzaChanged(PizzaCell pizzaCell)
         {
             bool isInFavList = pizzasFav.Contains(pizzaCell.pizza.nom);
+           
             if (pizzaCell.isFavorite && !isInFavList)
             {
                 pizzasFav.Add(pizzaCell.pizza.nom);
+                SaveFavList();
             }
             else if(!pizzaCell.isFavorite && isInFavList){
                 pizzasFav.Remove(pizzaCell.pizza.nom);
+                SaveFavList();
             }
         }
 
@@ -202,6 +210,21 @@ namespace PizzaApp
                 ret.Add(new PizzaCell { pizza = pizza,isFavorite= isFav, favChangedAction= OnFavPizzaChanged});
             }
             return ret;
+        }
+
+        private void SaveFavList() {
+            string json = JsonConvert.SerializeObject(pizzasFav);
+            Application.Current.Properties[KEY_FAV] = json;
+            Application.Current.SavePropertiesAsync();
+        }
+
+        private void LoadFavList()
+        {
+            if (Application.Current.Properties.ContainsKey(KEY_FAV))
+            {
+                string json = Application.Current.Properties[KEY_FAV].ToString();
+                pizzasFav = JsonConvert.DeserializeObject<List<string>>(json);
+            }
         }
     }
 }
