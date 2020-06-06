@@ -23,7 +23,7 @@ namespace PizzaApp
 
         enum e_tri
         {
-            TRI_AUCUN, TRI_NOM, TRI_PRIX
+            TRI_AUCUN, TRI_NOM, TRI_PRIX, TRI_FAV
         };
 
         e_tri tri = e_tri.TRI_AUCUN;
@@ -34,8 +34,6 @@ namespace PizzaApp
         string jsonFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),"pizzas.json");
         string tempFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "temp");
 
-        string favListFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "pizzasFav");
-        string tempFavFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "tempFav");
 
         public MainPage()
         {
@@ -135,6 +133,10 @@ namespace PizzaApp
             }
             else if (tri == e_tri.TRI_PRIX)
             {
+                tri = e_tri.TRI_FAV;
+            }
+            else if (tri == e_tri.TRI_FAV)
+            {
                 tri = e_tri.TRI_AUCUN;
             }
 
@@ -153,6 +155,9 @@ namespace PizzaApp
 
                 case e_tri.TRI_PRIX:
                     return "sort_prix.png";
+
+                case e_tri.TRI_FAV:
+                    return "sort_fav.png";
             }
             return "sort_none.png";
         }
@@ -162,8 +167,9 @@ namespace PizzaApp
             switch (t)
             {
                 case e_tri.TRI_NOM:
-                    {
-                        List<Pizza> ret = new List<Pizza>(l);
+                case e_tri.TRI_FAV:
+                    { 
+                    List<Pizza> ret = new List<Pizza>(l);
                         ret.Sort((p1,p2)=> { return p1.Titre.CompareTo(p2.Titre); });
                         return ret;
                     }
@@ -175,6 +181,7 @@ namespace PizzaApp
                         ret.Sort((p1, p2) => { return p2.prix.CompareTo(p1.prix); });
                         return ret;
                     }
+
             }
             return l;
 
@@ -206,8 +213,20 @@ namespace PizzaApp
 
             foreach(Pizza pizza in p)
             {
+                            
                 bool isFav = f.Contains(pizza.nom);
-                ret.Add(new PizzaCell { pizza = pizza,isFavorite= isFav, favChangedAction= OnFavPizzaChanged});
+
+                if (tri == e_tri.TRI_FAV)
+                {
+                    if (isFav)
+                    {
+                        ret.Add(new PizzaCell { pizza = pizza, isFavorite = isFav, favChangedAction = OnFavPizzaChanged });
+                    }
+                }
+                else
+                {
+                    ret.Add(new PizzaCell { pizza = pizza, isFavorite = isFav, favChangedAction = OnFavPizzaChanged });
+                }
             }
             return ret;
         }
