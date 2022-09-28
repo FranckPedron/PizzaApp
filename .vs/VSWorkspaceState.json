@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\PizzaApp",
+    "\\PizzaApp\\PizzaApp",
+    "\\PizzaApp\\PizzaApp.Android"
   ],
+  "SelectedNode": "\\PizzaApp\\PizzaApp.Android\\PizzaApp.Android.csproj",
   "PreviewInSolutionExplorer": false
 }
